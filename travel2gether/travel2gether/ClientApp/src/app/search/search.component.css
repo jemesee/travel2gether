@@ -1,0 +1,45 @@
+body{
+    width:100%;
+    position: relative;
+}
+
+.searchtitle{
+    height: 50px;
+    width: 100%;
+    margin: 20px 100px 0 0;
+    border-bottom: 1.5px solid rgb(0, 195, 255);
+    display: inline-block;
+}
+
+.offer_row{
+    height: 105px ;
+    width: 100%;
+    border-bottom: #a1a1a1 solid 1px;
+    display: inline-block;
+    z-index: 1;
+}
+
+.offer_row img{
+    height: 100px;
+    width: 100px;
+    display: inline-block;
+    vertical-align:top;
+}
+
+.offer_row_inside a{
+    display: inline;
+    font-size: 15px;
+    margin-right: 20px;
+}
+
+.offer_row_inside {
+    display: block;
+    width: 400px;
+}
+
+.offer_details{
+    display: inline-block; 
+    margin-top: 10px;
+    margin-left: 20px;
+    height: 90px;
+}

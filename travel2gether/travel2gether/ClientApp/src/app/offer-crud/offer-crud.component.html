@@ -1,0 +1,65 @@
+<body>
+  <div class="row">
+    <div class="col">
+      <div ngbDropdown class="d-inline-block">
+        <button class="btn choose" style="margin: 0; margin-bottom: 10px;" ngbDropdownToggle>Válassz ajánlatot</button>
+        <div ngbDropdownMenu>
+          <button ngbDropdownItem *ngFor="let offer of offerList" value=offer.id
+            (click)="loadDestination(offer.id)"> {{offer.destination}}</button>
+        </div>
+      </div>
+    </div>
+    <div class="col" id="submit">
+      <button type="button" class="submit-button" (click)="deleteOffer()"> Törlés</button>
+      <input type="submit" class="submit-button" value="Feltöltés!" (click)="submitStimulate()">
+    </div>
+  </div>
+
+  <form class="row" #Offer=ngForm (ngSubmit)="OnOfferSubmit(Image)">
+    <input type="hidden" name="offerId" [value]="offerService.formData.id">
+    <div class="col-sm-4 pic-upload">
+      <img [src]="imageUrl" class="picToUpload">
+      <label for="img-upload" class="upload-button" style="background: url(/assets/img/upload.png)" >
+        <input style="display: none;" id="img-upload" type="file" #Image accept="image/*"
+          (change)="handleFileInput($event.target.files)">
+      </label>
+    </div>
+    <div class="col-sm-7">
+      <div class="row">
+        <div class="col-sm-2">Kontinens:</div>
+        <input type="text" name="Continent" [(ngModel)]="offerService.formData.continent" placeholder="Európa? Ázsia?"
+          required autofocus autocomplete="off" class="textfield" style="width: 200px; margin:0;">
+        <div class="col-sm-2">Város:</div>
+        <input type="text" name="Destination" [(ngModel)]="offerService.formData.destination" placeholder="Hol?"
+          required autofocus autocomplete="off" class="textfield" style="width: 200px;  margin:0;">
+      </div>
+      <div class="row">
+        <div class="col-sm-1" style="margin-top: 10px;">Ár:</div>
+        <input type="text" name="Cost" [(ngModel)]="offerService.formData.cost" placeholder="Mennyiért?" required
+          autofocus autocomplete="off" class="textfield" style="width: 300px;">
+      </div>
+      <div class="">
+        <div class="">Rövid leírás:</div>
+        <input type="text" name="ShortDescription" [(ngModel)]="offerService.formData.shortDescription"
+          placeholder="Fejtsd ki kicsit..." required autofocus autocomplete="off" class="textfield"
+          style="width: 600px;">
+      </div>
+      <div>
+        <div class="">Dátum:</div>
+        <input type="text" ngbDatepicker #d="ngbDatepicker" class="textfield" style="width: 150px;"
+          (dateSelect)="onStartSelect($event)"  name="starter" [(ngModel)]="startDatePicker"/>
+        <button type="button" (click)="d.toggle()" class="datepickButton">Indulás</button>
+        <input type="text" ngbDatepicker #date="ngbDatepicker" class="textfield"
+          style="width: 150px; margin-left: 50px;" (dateSelect)="onEndSelect($event)" name="ender" [(ngModel)]="endDatePicker"/>
+        <button type="button" (click)="date.toggle()" class="datepickButton">Érkezés</button>
+      </div>
+      <div>
+        <div class="">Leírás:</div>
+        <textarea id="DetailText" name="Description" [(ngModel)]="offerService.formData.detailsSrc"
+          placeholder="Mit csinálhat? Miért különleges?" required autofocus autocomplete="off" class="textfield"
+          style="height: 250px;"></textarea>
+      </div>
+      <button type="submit" id="OfferSubmit" style="display: none;"> Submit</button>
+    </div>
+  </form>
+</body>

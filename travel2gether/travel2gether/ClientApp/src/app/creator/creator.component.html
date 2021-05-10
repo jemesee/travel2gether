@@ -1,0 +1,154 @@
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+</head>
+
+<body>
+  <div class="row">
+    <div class="col">
+      <div ngbDropdown class="d-inline-block">
+        <button class="btn choose" ngbDropdownToggle>Válassz, hogy mit szeretnél létrehozni?</button>
+        <div ngbDropdownMenu>
+          <button ngbDropdownItem value="1" (click)="newsShow()">Hírt</button>
+          <button ngbDropdownItem value="2" (click)="abroadsShow()">Külföldi ajánlatot</button>
+          <button ngbDropdownItem value="3" (click)="domesticsShow()">Belföldi ajánlatot</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+
+  <!--<div>
+    <form #imageForm=ngForm (ngSubmit)="DetailSubmit()">
+      <img [src]="imageUrl" style="width: 250px; height: 200px;">
+      <label for="img-upload" class="upload-button">Feltöltés
+        <input style="display: none;" id="img-upload" type="file" #Image accept="image/*"
+          (change)="handleFileInput($event.target.files)">
+      </label>
+
+      <textarea id="Detail" placeholder="Mit csinálhat? Miért különleges?" required autofocus autocomplete="off" class="textfield"
+      style="height: 250px;"> </textarea>
+      <button type="submit"> Submit</button>
+    </form>
+  </div>
+
+
+  <div class="row" *ngIf="this.newShow">
+    <form class="col-sm-4 pic-upload" #imageForm=ngForm (ngSubmit)="OnSubmit(Image)">
+      <img [src]="imageUrl" class="picToUpload">
+      <label for="img-upload" class="upload-button" style="background: url(/assets/img/upload.png)">
+        <input style="display: none;" id="img-upload" type="file" #Image accept="image/*"
+          (change)="handleFileInput($event.target.files)">
+      </label>
+    </form>
+    <div class="col-sm-7">
+      <div>
+        <div class="">#Hashtag</div>
+        <input type="text" style="width: 300px" placeholder="#travel2gether" required autofocus autocomplete="off"
+          class="textfield">
+      </div>
+      <div>
+        <div class="">Írd be a címet:</div>
+        <input type="text" placeholder="Cím" required autofocus autocomplete="off" class="textfield">
+      </div>
+      <div>
+        <div class="">Szöveg:</div>
+        <textarea placeholder="Ide írd a szöveget" required autofocus autocomplete="off" class="textfield"
+          style="height: 310px;"> </textarea>
+      </div>
+    </div>
+  </div>-->
+
+
+  <!--Continent, Destination, Cost, Start, End, Description  *ngIf="this.abroadShow"
+  <form class="row" *ngIf="this.abroadShow" #Offer=ngForm (ngSubmit)="OnOfferSubmit(Image)">
+    <input type="hidden" name="offerId" [value]="offerService.formData.id">
+    <div class="col-sm-4 pic-upload">
+      <img [src]="imageUrl" class="picToUpload">
+      <label for="img-upload" class="upload-button" style="background: url(/assets/img/upload.png)">
+        <input style="display: none;" id="img-upload" type="file" #Image accept="image/*"
+          (change)="handleFileInput($event.target.files)">
+      </label>
+    </div>
+    <div class="col-sm-7">
+      <div class="row">
+        <div class="col-sm-2">Kontinens:</div>
+        <input type="text" name="Continent" [(ngModel)]="offerService.formData.continent" placeholder="Európa? Ázsia?"
+          required autofocus autocomplete="off" class="textfield" style="width: 200px; margin:0;">
+        <div class="col-sm-2">Város:</div>
+        <input type="text" name="Destination" [(ngModel)]="offerService.formData.destination" placeholder="Hol?"
+          required autofocus autocomplete="off" class="textfield" style="width: 200px;  margin:0;">
+      </div>
+      <div class="row">
+        <div class="col-sm-1" style="margin-top: 10px;">Ár:</div>
+        <input type="text" name="Cost" [(ngModel)]="offerService.formData.cost" placeholder="Mennyiért?" required
+          autofocus autocomplete="off" class="textfield" style="width: 300px;">
+      </div>
+      <div class="">
+        <div class="">Rövid leírás:</div>
+        <input type="text" name="Cost" [(ngModel)]="offerService.formData.shortDescription"
+          placeholder="Fejtsd ki kicsit..." required autofocus autocomplete="off" class="textfield"
+          style="width: 600px;">
+      </div>
+      <div>
+        <div class="">Dátum:</div>
+        <input type="text" ngbDatepicker #d="ngbDatepicker" class="textfield" style="width: 150px;"
+          (dateSelect)="onStartSelect($event)" />
+        <button type="button" (click)="d.toggle()" class="datepickButton">Indulás</button>
+        <input type="text" ngbDatepicker #date="ngbDatepicker" class="textfield"
+          style="width: 150px; margin-left: 50px;" (dateSelect)="onEndSelect($event)" />
+        <button type="button" (click)="date.toggle()" class="datepickButton">Érkezés</button>
+      </div>
+      <div>
+        <div class="">Leírás:</div>
+        <textarea id="DetailText" name="Description" [(ngModel)]="offerService.formData.detailsSrc"
+          placeholder="Mit csinálhat? Miért különleges?" required autofocus autocomplete="off" class="textfield"
+          style="height: 250px;"> </textarea>
+      </div>
+      <button type="submit" id="OfferSubmit" style="display: none;"> Submit</button>
+    </div>
+  </form>
+
+
+  <div class="row" *ngIf="this.domesticShow">
+    <div class="col-sm-4 pic-upload">
+      <img [src]="imageUrl" class="picToUpload">
+      <label for="img-upload" class="upload-button" style="background: url(/assets/img/upload.png)">
+        <input style="display: none;" id="img-upload" type="file" #Image accept="image/*"
+          (change)="handleFileInput($event.target.files)">
+      </label>
+    </div>
+    <div class="col-sm-7">
+      <div>
+        <div class="">Város</div>
+        <input type="text" placeholder="Hol?" required autofocus autocomplete="off" class="textfield">
+      </div>
+      <div>
+        <div class="">Ár:</div>
+        <input type="text" placeholder="Mennyiért?" required autofocus autocomplete="off" class="textfield">
+      </div>
+      <div>
+        <div class="">Dátum:</div>
+        <input type="text" ngbDatepicker #d="ngbDatepicker" class="textfield" style="width: 150px;" />
+        <button (click)="d.toggle()" class="datepickButton">Indulás</button>
+        <input type="text" ngbDatepicker #d="ngbDatepicker" class="textfield"
+          style="width: 150px; margin-left: 50px;" />
+        <button (click)="d.toggle()" class="datepickButton">Érkezés</button>
+      </div>
+      <div>
+        <div class="">Leírás:</div>
+        <textarea placeholder="Mit csinálhat? Miért különleges?" required autofocus autocomplete="off" class="textfield"
+          style="height: 250px;"> </textarea>
+      </div>
+    </div>
+  </div>-->
+</body>
+
+</html>

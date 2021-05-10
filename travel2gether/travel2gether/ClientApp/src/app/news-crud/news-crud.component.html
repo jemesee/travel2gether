@@ -1,0 +1,53 @@
+<body>
+  <div class="row">
+    <div class="col">
+      <div ngbDropdown class="d-inline-block">
+        <button class="btn choose" style="margin: 0; margin-bottom: 10px;" ngbDropdownToggle>Válassz hírt</button>
+        <div ngbDropdownMenu>
+          <button ngbDropdownItem *ngFor="let news of newsList" value=news.id
+            (click)="loadNews(news.id)">{{news.id}} - {{news.hashtag}}</button>
+        </div>
+      </div>
+    </div>
+    <div class="col" id="submit">
+      <button type="button" class="submit-button" (click)="deleteNews()"> Törlés</button>
+      <input type="submit" class="submit-button" value="Feltöltés!" (click)="submitStimulate()">
+    </div>
+  </div>
+
+  <form class="row" #News=ngForm (ngSubmit)="OnNewsSubmit(Image)">
+    <input type="hidden" name="newsId" [value]="newsService.formData.id">
+    <div class="col-sm-4 pic-upload">
+      <img [src]="imageUrl" class="picToUpload">
+      <label for="img-upload" class="upload-button" style="background: url(/assets/img/upload.png)">
+        <input style="display: none;" id="img-upload" type="file" #Image accept="image/*"
+          (change)="handleFileInput($event.target.files)">
+      </label>
+    </div>
+    <div class="col-sm-7">
+      <div class="row">
+        <div class="col-sm-6">#Hashtag</div>
+        <div class="col-sm-1">Mikor?</div>
+      </div>
+      <div class="row">
+        <input type="text" name="Hashtag" [(ngModel)]="newsService.formData.hashtag" style="width: 300px"
+          placeholder="#travel2gether" required autofocus autocomplete="off" class="textfield col-sm-5">
+
+        <input type="text" name="date" [(ngModel)]="newsService.formData.date" style="margin-left: 50px; width: 150px"
+          placeholder="2021-01-01" required autofocus autocomplete="off" class="textfield" >
+      </div>
+
+      <div>
+        <div class="">Írd be a címet:</div>
+        <input type="text" name="Header" [(ngModel)]="newsService.formData.header" placeholder="Cím" required autofocus
+          autocomplete="off" class="textfield">
+      </div>
+      <div>
+        <div class="">Szöveg:</div>
+        <textarea name="Body" [(ngModel)]="newsService.formData.body" placeholder="Ide írd a szöveget" required
+          autofocus autocomplete="off" class="textfield" style="height: 310px;"> </textarea>
+      </div>
+      <button type="submit" id="NewsSubmit" style="display: none;"> Submit</button>
+    </div>
+  </form>
+</body>

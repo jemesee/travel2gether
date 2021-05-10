@@ -1,0 +1,56 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+  <div style="width: 100%; margin: 15px;">
+    <div style="width: 70%; float: left;">
+      <section>
+        <ngb-carousel style="width: 100%;">
+          <ng-template ngbSlide *ngFor="let offer of this.slideOffers; let i = index">
+              <div class="picsum-img-wrapper">
+                <img
+                  [src] = offer.picSrc
+                  alt="Random first slide" height="400" width="100%" style="object-fit: cover;">
+              </div>
+              <div class="carousel-caption">
+                <h3>{{offer.destination}}</h3>
+                <p>{{offer.shortDescription}}</p>
+              </div>
+          </ng-template>
+        </ngb-carousel>
+
+        <div class="row row-cols-1 row-cols-md-2" style="margin-left: 0;">
+          <div class="card border-dark mb-3" style="width: 294px; height: 190px; margin:5px" *ngFor = "let news of this.news" (click)="newsRedirect(news.id)">
+            <div class="card-header">#{{news.hashtag}}</div>
+            <div class="card-body text-dark">
+              <h5 class="card-title">{{news.header}}</h5>
+              <p class="card-text">{{news.date}}</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div>
+    <div style="width: 29%; float: right; ">
+      <section style="padding-left: 10px; border-left: solid 2px #f7f7f7;">
+        <span> Ajánlatok</span>
+
+
+        <div class="row" style="height: auto; border-bottom: 1px solid rgb(0, 195, 255); max-width: 350px; margin-left: auto; margin-right: auto;"
+          *ngFor="let offer of this.offers" (click)="offerRedirect(offer.id)">
+          <div class="col-4">
+            <img [src]=offer.picSrc alt="offer pic" class="pics">
+          </div>
+          <div class="offer col-8" style="margin-top: 3px; ">
+            <a><strong>Város:</strong> {{offer.destination}}</a>
+            <a><strong>Ár:</strong> {{offer.cost}} Ft</a>
+          </div>
+        </div>
+
+
+      </section>
+    </div>
+  </div>
+</body>

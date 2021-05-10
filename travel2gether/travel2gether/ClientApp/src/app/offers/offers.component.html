@@ -1,0 +1,57 @@
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+</head>
+
+<body>
+  <!--<div class="searchpart">
+    <span id="searchtitle">Keresés</span>
+    <div class="row align-items-start" id="searchbar">
+      <div class="col">
+        <label>Mikor indulnál?</label>
+        <input type="date" id="picker" class="form-control">
+      </div>
+      <div class="col">
+        <label>Meddig nyaralnál?</label>
+        <input type="date" class="form-control">
+      </div>
+      <div class="col">
+        <label>Hova?</label>
+        <input type="text" class="form-control">
+      </div>
+      <div class="col">
+        <label>Kontinens?</label>
+        <select class="custom-select">
+          <option selected>Válassz...</option>
+          <option value="1">Afrika</option>
+          <option value="2">Amerika</option>
+          <option value="3">Ausztrália</option>
+          <option value="4">Ázsia</option>
+          <option value="5">Európa</option>
+        </select>
+      </div>
+    </div>
+  </div>-->
+
+  <div class="row row-cols-1 row-cols-md-4" style="margin-top: 15px;">
+    <div class="col mb-4" *ngFor="let offer of this.offers">
+      <div class="card" (click)="routeToOffer(offer.id)">
+        <img [src]=offer.picSrc alt="offer pic" style="object-fit: cover; height: 170px;">
+        <div class="card-body" >
+          <h5 class="card-title">{{offer.destination}}</h5>
+          <p class="card-text">{{offer.shortDescription}}</p>
+          <a class="check-out" href="">Megnézem!</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+</body>
+
+</html>

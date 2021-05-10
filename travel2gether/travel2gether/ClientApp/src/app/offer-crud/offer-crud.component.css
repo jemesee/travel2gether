@@ -1,0 +1,66 @@
+.choose{
+    background-color: rgb(0, 195, 255); 
+    border-color: #f7f7f7; 
+    color: #f7f7f7;
+    margin: 30px 0px
+}
+
+.submit-button{
+    color: #fcb900;
+    background-color: #f7f7f7;
+    border: 2px solid #929292;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 5px 10px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+.btn :hover{
+    background-color: rgb(62, 65, 65);
+}
+
+.pic-upload{
+    border: 1px solid rgb(0, 195, 255);
+    border-radius: 20px;
+    vertical-align: middle;
+    margin-right: 35px;
+    position: relative;
+    padding: 0;
+}
+
+.picToUpload{
+    border-radius: 20px;
+    width: 368px; 
+    height: 400px; 
+    object-fit: cover;
+}
+
+.upload-button{
+    display: flex;
+    justify-content: center;
+    width: 154px;
+    height: 113px;
+    margin-left: 100px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.textfield{
+    border: 1px solid #929292;
+    border-radius: 10px;
+    width: 650px;
+    margin: 10px 0;
+}
+
+.datepickButton{
+    background-color: #f7f7f7;
+    border: 1px solid #929292;
+    color: #fcb900;
+    font-weight: 420;
+    border-radius: 10px;
+    margin: 0 20px;
+
+}
+

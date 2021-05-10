@@ -1,0 +1,56 @@
+<!DOCTYPE >
+<html>
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <div class="login-reg-panel">
+		<div class="register-info-box" id="regbox">
+			<h2>Nincs fiókod?</h2>
+			<p>Nem baj! Itt egy gomb nyomással megteheted!</p>
+            <button (click)="registrate()">Regisztrálok!</button>
+		</div>
+		
+		<div class="password_box" id="message" style="display:none;">
+			<h3>A jelszónak tartalmazni kell:</h3>
+			<p id="letter" class="invalid">Kisbetűt</p>
+			<p id="capital" class="invalid">Nagybetűt</p>
+			<p id="number" class="invalid">Számot</p>
+			<p id="length" class="invalid">Minimum 8 karaktert</p>
+			<p id="same" class="invalid">Két jelszónak meg kell egyeznie</p>
+		</div>
+							
+		<div class="white-panel">
+           <div class="login-panel" id="login_panel">
+				<h2>BELÉPÉS</h2>
+				<form #login_form="ngForm" (submit)="validated(login_form)" name="login_form"> <!--method="get" action="[/home]"-->
+					<input name="username" type="text" placeholder="Felhasználónév" required autofocus autocomplete="off">
+					<div class="error" id="usrname_error">Nem jól írtad be a felhasználóneved! </div>
+					
+					<input name="password_log" type="password" placeholder="Jelszó" required >
+					<div class="error" id="psw_error">Nem jól írtad be a jelszavad! </div>
+					
+					<input type="submit" value="Belépés" >
+				</form>
+				<a href="">Elfelejtetted a jelszavad?</a>
+            </div>
+
+			<div class="login-panel" id="reg_panel" style="display: none; ">
+				<h2>Regisztrálj!</h2>
+				<form>
+					<input type="text" placeholder="Felhasználónév">
+					<input type="text" placeholder="Teljes név" style="margin: 20px;">
+					<input type="text" placeholder="Email">
+					<input type="password" placeholder="Jelszó" id="password_reg1" (keyup)="valid_password()" style="margin: 20px;">
+					<input type="password" placeholder="Jelszót még egyszer" id="password_reg2" (keyup)="same_password()">
+					<input type="submit" value="Regisztrálok" style="margin: 20px;">
+				</form>
+            </div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+.cardtable{
+    display: flex;
+}
+
+.details_button{
+    font-size: 16px;
+    color: #fcb900;
+    border: solid 0.3px rgb(0, 195, 255);
+    border-radius: 15px;
+    background-color: #f7f7f7;
+    padding: 10px 15px;
+    margin-top: 10px;
+}
+
+.image{
+    width: 205px; 
+    height: 215px; 
+    margin: 5px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 20px;
+}
